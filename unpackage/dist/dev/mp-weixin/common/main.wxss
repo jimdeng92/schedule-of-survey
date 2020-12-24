@@ -3305,15 +3305,9 @@ u-dropdown {
 
 
 /* end-头条小程序编译后页面有组件名的元素，特别处理--end */
-
-
-
-
-
-
-
-
-
-
-
+page {
+  padding: 0 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
 
