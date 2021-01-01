@@ -1,7 +1,10 @@
 {
   "pages": [
-    "pages/login/login",
-    "pages/index/index"
+    "pages/survey/survey-addition",
+    "pages/survey/survey",
+    "pages/project/project",
+    "pages/index/index",
+    "pages/login/login"
   ],
   "subPackages": [],
   "window": {
@@ -10,5 +13,6 @@
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap87.json"
 }

@@ -3,17 +3,39 @@
 		"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
 	},
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		
 		{
-			"path": "pages/login/login",
-			"style": {
-				"navigationBarTitleText": "登录"
-			}
+		  "path": "pages/survey/survey-addition",
+		  "style": {
+		    "navigationBarTitleText": "填写调查表",
+		    "enablePullDownRefresh": false
+		  }
 		},
 		{
+		  "path": "pages/survey/survey",
+		  "style": {
+		    "navigationBarTitleText": "调查表列表",
+		    "enablePullDownRefresh": false
+		  }
+		},
+		{
+		  "path": "pages/project/project",
+		  "style": {
+		    "navigationBarTitleText": "项目列表",
+		    "enablePullDownRefresh": false
+		  }
+		},
+    {
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "首页",
 				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "登录"
 			}
 		}
   ],
