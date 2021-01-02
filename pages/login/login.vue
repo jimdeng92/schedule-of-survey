@@ -1,23 +1,27 @@
 <template>
 	<view class="login-container">
-		<view class="login-title">uni-app Demo</view>
+		<view class="login-title">调查表</view>
 		<view class="login-form">
-			<u-field
+      <u-form :model="form" ref="uForm">
+      		<u-form-item left-icon="account">
+            <u-input v-model="form.username" placeholder="请输入用户名"/>
+          </u-form-item>
+      		<u-form-item left-icon="lock">
+            <u-input v-model="form.password" placeholder="请输入密码" type="password"/>
+          </u-form-item>
+      </u-form>
+			<!-- <u-field
 				class="input"
-				v-model="form.username"
+				v-model.trim="form.username"
 				label="用户名"
-				placeholder="请填写用户名"
-				required
 			>
 			</u-field>
 			<u-field
 				class="input"
-				v-model="form.password"
+				v-model.trim="form.password"
 				label="密码"
-				placeholder="请填写密码"
-				required
 			>
-			</u-field>
+			</u-field> -->
 			<view class="login-submit-btn">
 				<u-button type="primary" @click="handleLogin">登录</u-button>
 			</view>
@@ -39,28 +43,43 @@
 
 		},
 		methods: {
-			handleLogin() {
+			async handleLogin() {
 				if (!this.checkForm()) return
-				
-				// TODO AJAX
-				
-				uni.redirectTo({
-					url: '/pages/index/index'
-				})
+        try {
+          const resData = await this.$request({
+            url: '/partnerlogin',
+            method: 'POST',
+            data: {
+              loginName: this.form.username,
+              password: this.form.password
+            }
+          })
+          uni.setStorage({
+            key: 'token',
+            data: resData.data.token
+          })
+          // 跳转到上一个页面
+          const pages = getCurrentPages()
+          uni.redirectTo({
+            url: '/' + pages[pages.length - 2].route
+          })
+        } catch(e) {
+          uni.showToast({
+          	title: e,
+          	icon: 'none'
+          })
+        }
+				// uni.showToast({
+				// 	title: '用户名或密码错误！',
+				// 	icon: 'none'
+				// })
 			},
 			checkForm() {
-				const username = this.form.username.trim()
-				const password = this.form.password.trim()
+				const username = this.form.username
+				const password = this.form.password
 				if (!username || !password) {
 					uni.showToast({
 						title: '请填写用户名和密码！',
-						icon: 'none'
-					})
-					return false
-				}
-				if (username !== 'jimdeng' || password !== '123456') {
-					uni.showToast({
-						title: '用户名或密码错误！',
 						icon: 'none'
 					})
 					return false

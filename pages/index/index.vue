@@ -1,9 +1,9 @@
 <template>
 	<view class="index-container">
 		<u-grid :col="2">
-      <u-grid-item v-for="(item,index) in gridList" :key="item.id">
+      <u-grid-item v-for="(item,index) in gridList" :key="item.id" @click="handleSkip(item.id)">
         <u-icon :name="item.iconName" :size="46"></u-icon>
-        <view class="grid-text" @click="handleSkip(item.id)">{{item.gridText}}</view>
+        <view class="grid-text">{{item.gridText}}</view>
       </u-grid-item>
     </u-grid>
     <view>TODO 公告...</view>
