@@ -87,7 +87,7 @@
       // 跳转到 公司详情
       handleNavigateTosurveyDetail(id) {
         uni.navigateTo({
-          url: '/pages/survey-detail/survey-detail'
+          url: '/pages/survey-detail/survey-detail?id=' + id
         })
       }
     }
@@ -96,6 +96,7 @@
 
 <style lang="scss">
 .survey-list-container {
+  padding: 0 14px;
   .listcard {
   	display: flex;
   	padding: 10px;

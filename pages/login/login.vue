@@ -92,7 +92,7 @@
 
 <style lang="scss">
 	.login-container {
-		margin: 0 10px;
+		padding: 14px;
 		.login-title {
 			margin: 80px 0 40px;
 			text-align: center;

@@ -25,11 +25,6 @@
             id: 1,
             iconName: 'list',
             gridText: '项目'
-          },
-          {
-            id: 2,
-            iconName: 'hourglass',
-            gridText: '沙漏'
           }
         ]
 			};
@@ -62,6 +57,7 @@
 
 <style lang="scss">
 .index-container {
+  padding: 14px;
   .grid-text {
     font-size: 28rpx;
     margin-top: 4rpx;

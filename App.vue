@@ -17,7 +17,6 @@
 	// 公共样式
 	// page 相当于 body 节点
 	page {
-		padding: 0 10px;
 		box-sizing: border-box;
 	}
 </style>

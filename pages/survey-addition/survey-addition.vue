@@ -248,6 +248,7 @@
 
 <style lang="scss">
 .survey-addition-container {
+  padding: 14px;
   .assets-item-title {
     background-color: $u-type-info-light;
     line-height: 32px;
