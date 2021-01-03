@@ -9,7 +9,7 @@ export default {
   region: [baseRule],
   address: [baseRule],
   enterpriseNature: [baseRule],
-  setupTime: [baseRule], // 转换后的值
+  establishTime: [baseRule], // 转换后的值
   businessScope: [baseRule],
   building: [baseRule],
   policySubsidies: [baseRule],

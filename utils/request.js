@@ -26,6 +26,7 @@ export default (params) => {
           uni.showToast({
             title: '未登录，请先登录',
             icon: 'none',
+            duration: 3000,
             complete() {
               uni.navigateTo({
                 url: '/pages/login/login'

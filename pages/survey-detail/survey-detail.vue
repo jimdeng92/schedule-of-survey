@@ -325,12 +325,15 @@ export default {
   },
   methods: {
     async getSurveyDetail() {
+      uni.showLoading()
       try {
         const resData = await this.$request({
           url: '/companys/' + this.id
         })
         this.surveyDetail = resData.data
+        uni.hideLoading()
       } catch(e) {
+        uni.hideLoading()
         uni.showToast({
           title: e,
           icon: 'none'
@@ -347,7 +350,7 @@ export default {
   .survey-detail-chunk-title {
     font-size: 14px;
     color: $u-main-color;
-    line-height: 38px;
+    line-height: 42px;
     border-bottom: 1px solid $u-border-color;
     padding-left: 14px;
   }

@@ -20,8 +20,6 @@
       <!-- 加载更多 -->
       <u-loadmore :status="status" :loadText="loadText" margin-bottom="20"/>
     </view>
-    <!-- 加载中 -->
-    <u-loading mode="circle" v-else class="u-text-center"></u-loading>
 		<view class="survey-addition" @click="handleToSurveyAddition">
       <u-icon name="edit-pen" :size="26" class="survey-addition-icon"></u-icon>
       <text class="survey-addition-text">填表</text>
@@ -57,6 +55,7 @@
     methods: {
       async getSurveyList() {
         try {
+          uni.showLoading()
           const resData = await this.$request({
             url: '/queryAppCompany',
             method: "POST",
@@ -72,7 +71,9 @@
           if (this.total <= this.pageSize * this.currentPage) {
             this.status = 'nomore'
           }
+          uni.hideLoading()
         } catch(e) {
+          uni.hideLoading()
           uni.showToast({
             title: e,
             icon: 'none'

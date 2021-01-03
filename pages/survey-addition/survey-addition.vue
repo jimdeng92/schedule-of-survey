@@ -214,14 +214,14 @@
         <u-upload ref="uUpload" action="http://120.78.130.184:8081/v1/upload" :fileList="fileList" :auto-upload="false"></u-upload>
       </u-form-item>
       <u-form-item>
-        <u-button type="primary" @click="handleSubmit">提交</u-button>
+        <u-button type="primary" @click="handleSubmit" :ripple="true">提 交</u-button>
       </u-form-item>
     </u-form>
     <!-- 日期选择器 -->
     <u-picker 
       v-model="visibleDate" 
       mode="time" 
-      :end-year="new Date().getFullYear()"
+      :end-year="new Date().getFullYear() - 1"
       @confirm="handleConfirmDate"
     >
     </u-picker>
@@ -249,7 +249,7 @@
 
 <style lang="scss">
 .survey-addition-container {
-  padding: 14px;
+  padding: 14px 14px 30px;
   .assets-item-title {
     background-color: $u-type-info-light;
     line-height: 32px;

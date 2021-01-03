@@ -23,7 +23,7 @@
 			>
 			</u-field> -->
 			<view class="login-submit-btn">
-				<u-button type="primary" @click="handleLogin">登录</u-button>
+				<u-button type="primary" @click="handleLogin">登 录</u-button>
 			</view>
 		</view>
 	</view>

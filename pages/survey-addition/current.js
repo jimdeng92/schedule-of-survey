@@ -9,6 +9,9 @@ export default {
       rules,
       form: {
         companyName: '',
+        province: '',
+        city: '',
+        area: '',
         region: '', // 省市区
         address: '', // 详细地址
         enterpriseNature: '',
@@ -85,21 +88,25 @@ export default {
           })
           return
         }
+        uni.showLoading()
         try {
           const resData = await this.$request({
             url: '/createCompany',
             data: this.form,
             method: 'POST'
           })
-          uni.showToast({
-            title: '操作成功！',
-            success() {
-              uni.redirectTo({
-                url: '/pages/survey/survey'
-              })
-            }
+          uni.hideLoading()
+          uni.redirectTo({
+            url: '/pages/survey/survey'
           })
+          // uni.showToast({
+          //   title: '操作成功！',
+          //   success() {
+              
+          //   }
+          // })
         } catch(e) {
+          uni.hideLoading()
           uni.showToast({
             title: e,
             icon: 'none'
