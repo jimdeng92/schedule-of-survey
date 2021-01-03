@@ -37,9 +37,9 @@
           <u-table>
             <u-tr>
               <u-th>（万元）</u-th>
+              <u-th>2021年</u-th>
               <u-th>2020年</u-th>
               <u-th>2019年</u-th>
-              <u-th>2018年</u-th>
             </u-tr>
             <u-tr>
               <u-td>营业收入</u-td>

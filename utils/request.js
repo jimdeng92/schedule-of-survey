@@ -25,14 +25,13 @@ export default (params) => {
         if (resData.code === 401 || resData.code === 300) {
           uni.showToast({
             title: '未登录，请先登录',
-            icon: 'none',
-            duration: 3000,
-            complete() {
-              uni.navigateTo({
-                url: '/pages/login/login'
-              })
-            }
+            icon: 'none'
           })
+          setTimeout(() => {
+            uni.navigateTo({
+              url: '/pages/login/login'
+            })
+          }, 1500)
           // return 不返回任何内容 try 和 catch 的代码都不执行
           return
         } else if (resData.code !== 200) {

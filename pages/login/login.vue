@@ -23,7 +23,7 @@
 			>
 			</u-field> -->
 			<view class="login-submit-btn">
-				<u-button type="primary" @click="handleLogin">登 录</u-button>
+				<u-button type="primary" @click="handleLogin" :ripple="true">登 录</u-button>
 			</view>
 		</view>
 	</view>
@@ -59,10 +59,15 @@
             data: resData.data.token
           })
           // 跳转到上一个页面
-          const pages = getCurrentPages()
-          uni.redirectTo({
-            url: '/' + pages[pages.length - 2].route
+          uni.reLaunch({
+            url: '/pages/index/index'
           })
+          // uni.navigateBack()
+          // const pages = getCurrentPages()
+          // console.log(pages)
+          // uni.redirectTo({
+          //   url: '/' + pages[pages.length - 2].route
+          // })
         } catch(e) {
           uni.showToast({
           	title: e,
