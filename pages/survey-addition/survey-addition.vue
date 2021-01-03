@@ -4,8 +4,8 @@
       <u-form-item label="企业名称" required prop="companyName">
         <u-input v-model="form.companyName" />
       </u-form-item>
-      <u-form-item label="注册地址（省市区）" required prop="region" right-icon="arrow-down-fill">
-        <u-input v-model="form.region" @focus="visibleRegion = true"/>
+      <u-form-item label="注册地址（省市区）" required prop="region">
+        <u-input v-model="form.region" @click="visibleRegion = true" type="select" :select-open="visibleRegion"/>
       </u-form-item>
       <u-form-item label="注册详细地址(街道门牌号)" required prop="address">
         <u-input v-model="form.address" />
@@ -14,7 +14,7 @@
         <u-input v-model="form.enterpriseNature" />
       </u-form-item>
       <u-form-item label="成立日期" required prop="establishTime">
-        <u-input v-model="form.establishTime" @focus="visibleDate = true"/>
+        <u-input v-model="form.establishTime" @click="visibleDate = true" type="select" :select-open="visibleDate"/>
       </u-form-item>
       <u-form-item label="企业简介（含主营范围）" required prop="businessScope">
         <u-input v-model="form.businessScope" type="textarea"/>
@@ -134,6 +134,7 @@
             <u-input v-model="form.occupationCount" type="number" />
           </u-form-item>
           <u-form-item label="研发人员占所有在职人员比率" required prop="postgraduateRatio">
+            <view slot="right">%</view>
             <u-input v-model="form.postgraduateRatio" type="number" />
           </u-form-item>
           <u-form-item label="总人数（人）" required prop="allCount">

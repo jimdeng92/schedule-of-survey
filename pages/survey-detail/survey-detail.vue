@@ -153,7 +153,7 @@
     <view class="survey-detail-item">
       <view class="item-title">研发人员占所有在职人员比率</view>
       <view class="item-body">
-        {{surveyDetail.postgraduateRatio}}
+        {{surveyDetail.postgraduateRatio}}%
       </view>
     </view>
     <view class="survey-detail-item">
@@ -307,39 +307,38 @@
 </template>
 
 <script>
-  
-	export default {
-		data() {
-			return {
-				id: 0,
-        surveyDetail: null,
-        headStyle: {
-          paddingLeft: '14px'
-        }
-			};
-		},
-    onLoad(options) {
-      this.id = options.id
-    },
-    onReady() {
-      this.getSurveyDetail()
-    },
-    methods: {
-      async getSurveyDetail() {
-        try {
-          const resData = await this.$request({
-            url: '/companys/' + this.id
-          })
-          this.surveyDetail = resData.data
-        } catch(e) {
-          uni.showToast({
-            title: e,
-            icon: 'none'
-          })
-        }
+export default {
+  data() {
+    return {
+      id: 0,
+      surveyDetail: null,
+      headStyle: {
+        paddingLeft: '14px'
+      }
+    };
+  },
+  onLoad(options) {
+    this.id = options.id
+  },
+  onReady() {
+    this.getSurveyDetail()
+  },
+  methods: {
+    async getSurveyDetail() {
+      try {
+        const resData = await this.$request({
+          url: '/companys/' + this.id
+        })
+        this.surveyDetail = resData.data
+      } catch(e) {
+        uni.showToast({
+          title: e,
+          icon: 'none'
+        })
       }
     }
-	}
+  }
+}
 </script>
 
 <style lang="scss">
