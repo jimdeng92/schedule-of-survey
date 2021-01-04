@@ -1,7 +1,7 @@
 {
     "name" : "schedule-of-survey",
     "appid" : "__UNI__F7B0450",
-    "description" : "",
+    "description" : "调查表",
     "versionName" : "1.0.0",
     "versionCode" : "100",
     "transformPx" : false,
@@ -62,7 +62,10 @@
             "urlCheck" : false,
             "es6" : false
         },
-        "usingComponents" : true
+        "usingComponents" : true,
+        "uniStatistics" : {
+            "enable" : false
+        }
     },
     "mp-alipay" : {
         "usingComponents" : true

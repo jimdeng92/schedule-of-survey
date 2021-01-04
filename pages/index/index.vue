@@ -31,6 +31,9 @@
         ]
 			};
 		},
+    onShareAppMessage() {
+      console.log('index--onShareAppMessage');
+    },
     methods: {
       handleSkip(id) {
         let path = ''
