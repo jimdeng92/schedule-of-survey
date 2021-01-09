@@ -211,7 +211,13 @@
         <u-input v-model="form.strategicPlanning" type="textarea" placeholder="1.是否有投新厂或迁厂规划、2.是否有购买或更新设备规划、3.是否有建设冷链规划（冷库、冷藏车）、4.以及其他方面投资规划"/>
       </u-form-item>
       <u-form-item label="其他（附产品、厂房、研发场地、研发设备、销售发票等照片）" required>
-        <u-upload ref="uUpload" action="http://120.78.130.184:8081/v1/upload" :fileList="fileList" :auto-upload="false"></u-upload>
+        <u-upload 
+          ref="uUpload" 
+          action="http://120.78.130.184:8081/v1/upload" 
+          :auto-upload="false" 
+          :max-count="9"
+        >
+        </u-upload>
       </u-form-item>
       <u-form-item>
         <u-button type="primary" @click="handleSubmit" :ripple="true">提 交</u-button>

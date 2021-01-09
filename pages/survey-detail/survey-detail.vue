@@ -1,6 +1,6 @@
 <template>
 	<view v-if="surveyDetail" class="survey-detail-container">
-		<view class="survey-detail-title">{{surveyDetail.companyName}}</view>
+		<!-- <view class="survey-detail-title">{{surveyDetail.companyName}}</view> -->
 		<view class="survey-detail-item">
       <view class="item-title">注册地址</view>
       <view class="item-body">

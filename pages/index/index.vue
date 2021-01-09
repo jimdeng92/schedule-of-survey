@@ -1,7 +1,7 @@
 <template>
 	<view class="index-container">
     <!-- 公告栏 -->
-    <u-notice-bar mode="vertical" :list="noticeList" :duration="3000" :more-icon="true" @click="handleNoticeClick"></u-notice-bar>
+    <u-notice-bar mode="vertical" :list="noticeList" :duration="3000" @click="handleNoticeClick"></u-notice-bar>
 		<view class="index-wrap">
       <u-row gutter="10">
         <u-col span="6" v-for="item in gridList" :key="item.id" class="grid-col">

@@ -3,7 +3,6 @@ import rules from '@/utils/rules.js'
 export default {
   data() {
     return {
-      fileList: [],
       currentYear: new Date().getFullYear(),
       visibleDate: false,
       visibleRegion: false,
@@ -78,9 +77,6 @@ export default {
       this.form.region = res.province.label + res.city.label + res.area.label
     },
     handleSubmit() {
-      // this.$refs.uUpload.upload();
-      // const files = this.$refs.uUpload.lists.filter(val => val.progress == 100)
-      // console.log(files)
       this.$refs.uForm.validate(async (valid) => {
         if (!valid) {
           uni.showToast({
@@ -90,6 +86,10 @@ export default {
           return
         }
         uni.showLoading()
+        // TODO 上传图片，图片校验，参数插入，详情添加图片，列表添加图片
+        // this.$refs.uUpload.upload();
+        // const files = this.$refs.uUpload.lists.filter(val => val.progress == 100)
+        // console.log(files)
         try {
           const resData = await this.$request({
             url: '/createCompany',
@@ -100,12 +100,6 @@ export default {
           uni.redirectTo({
             url: '/pages/survey/survey'
           })
-          // uni.showToast({
-          //   title: '操作成功！',
-          //   success() {
-              
-          //   }
-          // })
         } catch(e) {
           uni.hideLoading()
           uni.showToast({
