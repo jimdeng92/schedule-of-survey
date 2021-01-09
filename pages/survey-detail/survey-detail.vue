@@ -105,9 +105,9 @@
       <view class="item-body">
         <u-table>
           <u-tr>
-            <u-th>2021年</u-th>
-            <u-th>2020年</u-th>
-            <u-th>2019年</u-th>
+            <u-th>{{currentYear}}年</u-th>
+            <u-th>{{currentYear - 1}}年</u-th>
+            <u-th>{{currentYear - 2}}年</u-th>
           </u-tr>
           <u-tr>
             <u-td>{{surveyDetail.taxOne}}</u-td>
@@ -310,6 +310,7 @@
 export default {
   data() {
     return {
+      currentYear: new Date().getFullYear(),
       id: 0,
       surveyDetail: null,
       headStyle: {

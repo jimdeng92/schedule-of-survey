@@ -4,6 +4,7 @@ export default {
   data() {
     return {
       fileList: [],
+      currentYear: new Date().getFullYear(),
       visibleDate: false,
       visibleRegion: false,
       rules,

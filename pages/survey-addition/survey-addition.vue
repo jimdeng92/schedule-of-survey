@@ -19,7 +19,7 @@
       <u-form-item label="企业简介（含主营范围）" required prop="businessScope">
         <u-input v-model="form.businessScope" type="textarea"/>
        </u-form-item>
-      <u-card title="诉求方向" :full="true">
+      <u-card title="诉求方向" :full="true" :border-radius="0">
         <view slot="body">
           <u-form-item label="形象建设、提升" required prop="building">
             <u-input v-model="form.building" />
@@ -32,14 +32,14 @@
       <u-form-item label="高新技术领域" required prop="techField">
         <u-input v-model="form.techField" type="textarea"/>
       </u-form-item>
-      <u-card title="财务状况" :full="true">
+      <u-card title="财务状况" :full="true" :border-radius="0">
         <view slot="body">
           <u-table>
             <u-tr>
               <u-th>（万元）</u-th>
-              <u-th>2021年</u-th>
-              <u-th>2020年</u-th>
-              <u-th>2019年</u-th>
+              <u-th>{{currentYear}}年</u-th>
+              <u-th>{{currentYear - 1}}年</u-th>
+              <u-th>{{currentYear - 2}}年</u-th>
             </u-tr>
             <u-tr>
               <u-td>营业收入</u-td>
@@ -119,7 +119,7 @@
           </u-form-item>
         </view>
       </u-card>
-      <u-card title="人力资源结构（以申报个税/社保人数为准）" :full="true">
+      <u-card title="人力资源结构（以申报个税/社保人数为准）" :full="true" :border-radius="0">
         <view slot="body">
           <u-form-item label="硕士以上人数（人）" required prop="postgraduateCount">
             <u-input v-model="form.postgraduateCount" type="number"/>
@@ -142,7 +142,7 @@
           </u-form-item>
         </view>
       </u-card>
-      <u-card title="固定资产情况" :full="true">
+      <u-card title="固定资产情况" :full="true" :border-radius="0">
         <view slot="body">
           <view class="assets-item-title">固定资产入账总金额</view>
           <u-form-item label="基础建设投资（万元）">
@@ -191,7 +191,7 @@
           </u-form-item>
         </view>
       </u-card>
-      <u-card title="产品名称" :full="true">
+      <u-card title="产品名称" :full="true" :border-radius="0">
         <view slot="body">
           <u-form-item label="主要开票名称" required prop="billingName">
             <u-input v-model="form.billingName" />
