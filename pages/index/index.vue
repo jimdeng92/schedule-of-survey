@@ -1,7 +1,7 @@
 <template>
 	<view class="index-container">
     <!-- 公告栏 -->
-    <u-notice-bar mode="vertical" :list="noticeList" :duration="3000" :more-icon="true"></u-notice-bar>
+    <u-notice-bar mode="vertical" :list="noticeList" :duration="3000" :more-icon="true" @click="handleNoticeClick"></u-notice-bar>
 		<view class="index-wrap">
       <u-row gutter="10">
         <u-col span="6" v-for="item in gridList" :key="item.id" class="grid-col">
@@ -13,6 +13,13 @@
       </u-row>
     </view>
     <u-toast ref="uToast" />
+    <!-- 弹出层 -->
+    <u-popup v-model="visiblePopup" mode="bottom" :closeable="true" :height="600">
+      <view class="popup-wrap">
+        <text class="popup-time">{{popupContent.updateTime || popupContent.createTime}}</text>
+        <view class="popup-context">{{popupContent.context}}</view>
+      </view>
+    </u-popup>
 	</view>
 </template>
 
@@ -20,7 +27,10 @@
 	export default {
 		data() {
 			return {
+        visiblePopup: false,
         noticeList: [],
+        nativeList: [],
+        popupContent: null,
 				gridList: [
           {
             id: 0,
@@ -44,6 +54,10 @@
       console.log('index--onShareAppMessage');
     },
     methods: {
+      handleNoticeClick(index) {
+        this.visiblePopup = true
+        this.popupContent = this.nativeList[index]
+      },
       async getNoticeList() {
         try {
           const resData = await this.$request({
@@ -51,10 +65,11 @@
             method: 'POST',
             data: {
               page: 1,
-              pageSize: 10
+              pageSize: 100
             }
           })
           if (resData && resData.data && resData.data.rows) {
+            this.nativeList = resData.data.rows
             this.noticeList = resData.data.rows.map(
               item => item.context
             )
@@ -104,7 +119,7 @@
       color: $u-type-info;
       margin-bottom: 5px;
       // padding: 45px 0;
-      height: 300px;
+      height: 200px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -127,6 +142,18 @@
       background: linear-gradient(135deg, #3f87a6, #f69d3c);
     }
   }
-  
+  .popup-wrap {
+    padding: 44px 20px 20px;
+    .popup-context {
+      font-size: 14px;
+      color: $u-type-info;
+      line-height: 1.4;
+    }
+    .popup-time {
+      font-size: 12px;
+      color: $u-type-info-disabled;
+      line-height: 2;
+    }
+  }
 }
 </style>
