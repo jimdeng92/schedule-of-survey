@@ -40,6 +40,9 @@
     onReady() {
       this.getNoticeList()
     },
+    onShareAppMessage() {
+      console.log('index--onShareAppMessage');
+    },
     methods: {
       async getNoticeList() {
         try {
