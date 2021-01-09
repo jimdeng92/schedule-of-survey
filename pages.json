@@ -14,7 +14,7 @@
     {
       "path": "pages/survey-addition/survey-addition",
       "style": {
-        "navigationBarTitleText": "填写调查表",
+        "navigationBarTitleText": "填调查表",
         "enablePullDownRefresh": false
       }
     },
@@ -27,14 +27,14 @@
     {
       "path": "pages/survey/survey",
       "style": {
-        "navigationBarTitleText": "调查表列表",
+        "navigationBarTitleText": "调查表",
         "enablePullDownRefresh": false
       }
     },
     {
       "path": "pages/project/project",
       "style": {
-        "navigationBarTitleText": "项目列表",
+        "navigationBarTitleText": "项目",
         "enablePullDownRefresh": false
       }
     }, {

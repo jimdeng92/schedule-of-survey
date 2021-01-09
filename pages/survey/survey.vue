@@ -12,13 +12,16 @@
               <view class="listcard-content__des-label-item u-line-2">{{item.businessScope}}</view>
             </view>
           </view>
+          <!-- <view class="listcard-content__time">
+            成立时间：{{item.establishTime}}
+          </view> -->
         </view>
         <view class="listcard-image">
           <image src="/static/logo.png" mode="aspectFill"></image>
         </view>
       </view>
       <!-- 加载更多 -->
-      <u-loadmore :status="status" :loadText="loadText" margin-bottom="20"/>
+      <u-loadmore :status="status" margin-bottom="20"/>
     </view>
 		<view class="survey-addition" @click="handleToSurveyAddition">
       <u-icon name="edit-pen" :size="26" class="survey-addition-icon"></u-icon>
@@ -35,16 +38,11 @@
 				surveyList: [],
         total: 0,
         currentPage: 1,
-        pageSize: 10,
-        loadText: {
-          loadmore: '轻轻上拉',
-          loading: '努力加载中',
-          nomore: '实在没有了'
-        }
+        pageSize: 10
 			};
 		},
-    onReady() {
-      this.getSurveyList()
+    async onReady() {
+      await this.getSurveyList()
     },
     // 上拉
     onReachBottom() {
@@ -136,6 +134,11 @@
   				-webkit-box-orient: vertical;
   			}
   		}
+      .listcard-content__time {
+        font-size: 12px;
+        color: $u-type-info-disabled;
+        margin-top: 10px;
+      }
   		.listcard-content__des {
   			display: flex;
   			justify-content: space-between;

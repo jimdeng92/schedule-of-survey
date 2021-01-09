@@ -320,8 +320,11 @@ export default {
   onLoad(options) {
     this.id = options.id
   },
-  onReady() {
-    this.getSurveyDetail()
+  async onReady() {
+    await this.getSurveyDetail()
+    uni.setNavigationBarTitle({
+      title: this.surveyDetail.companyName
+    })
   },
   methods: {
     async getSurveyDetail() {
