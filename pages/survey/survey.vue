@@ -24,7 +24,7 @@
       <u-loadmore :status="status" margin-bottom="20"/>
     </view>
 		<view class="survey-addition" @click="handleToSurveyAddition">
-      <u-icon name="edit-pen" :size="26" class="survey-addition-icon"></u-icon>
+      <u-icon name="edit-pen" :size="28" class="survey-addition-icon"></u-icon>
       <text class="survey-addition-text">填表</text>
     </view>
 	</view>
@@ -156,11 +156,11 @@
   	}
   }
   .survey-addition {
-    color: red;
-    border-radius: 21px;
+    color: $u-type-error;
+    border-radius: 22px;
     background-color: #fff;
-    height: 42px;
-    padding: 0 25px;
+    height: 44px;
+    padding: 0 28px;
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -169,7 +169,10 @@
     align-items: center;
     box-shadow: 2px 2px 5px $u-type-info;
     .survey-addition-icon {
-      margin-right: 5px;
+      margin-right: 6px;
+    }
+    .survey-addition-text {
+      font-size: 14px;
     }
   }
 }
