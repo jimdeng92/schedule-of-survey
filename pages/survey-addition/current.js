@@ -3,6 +3,8 @@ import rules from '@/utils/rules.js'
 export default {
   data() {
     return {
+      actionUrl: "https://test.zhengchi-cn.com/mgmt/v1/uploadAppPic",
+      token: uni.getStorageSync('token') || '',
       currentYear: new Date().getFullYear(),
       visibleDate: false,
       visibleRegion: false,
@@ -57,7 +59,8 @@ export default {
         declaredItems: '',
         researchPlan: '',
         industryLevel: '',
-        strategicPlanning: ''
+        strategicPlanning: '',
+        detail: '' // 图片地址逗号分隔
       }
     };
   },
@@ -76,8 +79,37 @@ export default {
       this.form.area = res.area.label // 后端需要的字段
       this.form.region = res.province.label + res.city.label + res.area.label
     },
+    handleError() {
+      this.shwoToast({
+        title: '图片上传失败',
+        icon: 'none'
+      })
+    },
+    // 图片全部上传成功
+    async handleUploaded(lists, name) {
+      const urls = lists.map(item => item.response.url)
+      this.form.detail = urls.join(',')
+      
+      try {
+        const resData = await this.$request({
+          url: '/createCompany',
+          data: this.form,
+          method: 'POST'
+        })
+        uni.hideLoading()
+        uni.redirectTo({
+          url: '/pages/survey/survey'
+        })
+      } catch(e) {
+        uni.hideLoading()
+        uni.showToast({
+          title: e,
+          icon: 'none'
+        })
+      }
+    },
     handleSubmit() {
-      this.$refs.uForm.validate(async (valid) => {
+      this.$refs.uForm.validate(valid => {
         if (!valid) {
           uni.showToast({
             title: '请检查必填项',
@@ -85,28 +117,15 @@ export default {
           })
           return
         }
-        uni.showLoading()
-        // TODO 上传图片，图片校验，参数插入，详情添加图片，列表添加图片
-        // this.$refs.uUpload.upload();
-        // const files = this.$refs.uUpload.lists.filter(val => val.progress == 100)
-        // console.log(files)
-        try {
-          const resData = await this.$request({
-            url: '/createCompany',
-            data: this.form,
-            method: 'POST'
-          })
-          uni.hideLoading()
-          uni.redirectTo({
-            url: '/pages/survey/survey'
-          })
-        } catch(e) {
-          uni.hideLoading()
+        // TODO 图片校验
+        if (this.$refs.uUpload.lists.length === 0) {
           uni.showToast({
-            title: e,
+            title: '请选择图片',
             icon: 'none'
           })
         }
+        uni.showLoading()
+        this.$refs.uUpload.upload();
       });
     }
   }

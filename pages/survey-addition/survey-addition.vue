@@ -17,7 +17,7 @@
         <u-input v-model="form.establishTime" @click="visibleDate = true" type="select" :select-open="visibleDate"/>
       </u-form-item>
       <u-form-item label="企业简介（含主营范围）" required prop="businessScope">
-        <u-input v-model="form.businessScope" type="textarea"/>
+        <u-input v-model="form.businessScope" type="textarea" maxlength="300"/>
        </u-form-item>
       <u-card title="诉求方向" :full="true" :border-radius="0">
         <view slot="body">
@@ -30,7 +30,7 @@
         </view>
       </u-card>
       <u-form-item label="高新技术领域" required prop="techField">
-        <u-input v-model="form.techField" type="textarea"/>
+        <u-input v-model="form.techField" type="textarea" maxlength="300"/>
       </u-form-item>
       <u-card title="财务状况" :full="true" :border-radius="0">
         <view slot="body">
@@ -115,7 +115,7 @@
             </u-tr>
           </u-table>
           <u-form-item label="融资贷款（质押）" required prop="pledge">
-            <u-input v-model="form.pledge" />
+            <u-input v-model="form.pledge" type="number"/>
           </u-form-item>
         </view>
       </u-card>
@@ -199,21 +199,26 @@
         </view>
       </u-card>
       <u-form-item label="已申报项目（包括荣誉资质）">
-        <u-input v-model="form.declaredItems" type="textarea"/>
+        <u-input v-model="form.declaredItems" type="textarea" maxlength="300"/>
       </u-form-item>
       <u-form-item label="研发计划或方向" required prop="researchPlan">
-        <u-input v-model="form.researchPlan " type="textarea"/>
+        <u-input v-model="form.researchPlan " type="textarea" maxlength="300"/>
       </u-form-item>
       <u-form-item label="行业水平">
-        <u-input v-model="form.industryLevel" type="textarea"/>
+        <u-input v-model="form.industryLevel" type="textarea" maxlength="300"/>
       </u-form-item>
       <u-form-item label="企业未来三年的发展战略规划" required prop="strategicPlanning">
-        <u-input v-model="form.strategicPlanning" type="textarea" placeholder="1.是否有投新厂或迁厂规划、2.是否有购买或更新设备规划、3.是否有建设冷链规划（冷库、冷藏车）、4.以及其他方面投资规划"/>
+        <u-input v-model="form.strategicPlanning" type="textarea" placeholder="1.是否有投新厂或迁厂规划、2.是否有购买或更新设备规划、3.是否有建设冷链规划（冷库、冷藏车）、4.以及其他方面投资规划" maxlength="300"/>
       </u-form-item>
       <u-form-item label="其他（附产品、厂房、研发场地、研发设备、销售发票等照片）" required>
         <u-upload 
           ref="uUpload" 
-          action="http://120.78.130.184:8081/v1/upload" 
+          :action="actionUrl" 
+          @onUploaded="handleUploaded"
+          @onError="handleError"
+          :header="{
+            token: token
+          }"
           :auto-upload="false" 
           :max-count="9"
         >
@@ -228,6 +233,7 @@
       v-model="visibleDate" 
       mode="time" 
       :end-year="new Date().getFullYear() - 1"
+      default-time="2010-01-01"
       @confirm="handleConfirmDate"
     >
     </u-picker>

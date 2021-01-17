@@ -8,6 +8,7 @@
           <view class="grid-item" @click="handleSkip(item.id)">
             <u-icon :name="item.iconName" color="#fff" :size="item.iconSize"></u-icon>
             <view class="grid-item-text">{{item.gridText}}</view>
+            <view class="grid-item-data" v-if="item.id === 1 && projectAmount">补贴总金额：{{projectAmount}}万</view>
           </view>
         </u-col>
       </u-row>
@@ -29,6 +30,7 @@
 			return {
         visiblePopup: false,
         noticeList: [],
+        projectAmount: '',
         nativeList: [],
         popupContent: null,
 				gridList: [
@@ -49,6 +51,9 @@
 		},
     onReady() {
       this.getNoticeList()
+      if (uni.getStorageSync('token')) {
+        this.getProjectAmount()
+      }
     },
     onShareAppMessage() {
       console.log('index--onShareAppMessage');
@@ -57,6 +62,17 @@
       handleNoticeClick(index) {
         this.visiblePopup = true
         this.popupContent = this.nativeList[index]
+      },
+      async getProjectAmount() {
+        try {
+          const resData = await this.$request({
+            url: '/queryProjectSum',
+            method: 'GET'
+          })
+          this.projectAmount = resData.data
+        } catch(e) {
+          
+        }
       },
       async getNoticeList() {
         try {
@@ -124,11 +140,19 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
+      position: relative;
       .grid-item-text {
         line-height: 2;
         font-size: 16px;
         font-weight: bold;
         color: #fff;
+      }
+      .grid-item-data {
+        color: #fff;
+        font-size: 12px;
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
       }
     }
     &:nth-child(2n) .grid-item {

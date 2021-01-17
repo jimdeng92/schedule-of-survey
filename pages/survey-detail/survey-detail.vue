@@ -22,7 +22,7 @@
     <view class="survey-detail-item">
       <view class="item-title">企业简介（含主营范围）</view>
       <view class="item-body">
-        {{surveyDetail.businessScope}}
+        <text>{{surveyDetail.businessScope}}</text>
       </view>
     </view>
     <u-gap height="20" bg-color="#f3f4f6"></u-gap>
@@ -44,7 +44,7 @@
     <view class="survey-detail-item">
       <view class="item-title">高新技术领域</view>
       <view class="item-body">
-        {{surveyDetail.techField}}
+        <text>{{surveyDetail.techField}}</text>
       </view>
     </view>
     <u-gap height="20" bg-color="#f3f4f6"></u-gap>
@@ -121,7 +121,7 @@
     <view class="survey-detail-item">
       <view class="item-title">融资贷款（质押）</view>
       <view class="item-body">
-        {{surveyDetail.pledge}}
+        {{surveyDetail.pledge}}万
       </view>
     </view>
     <u-gap height="20" bg-color="#f3f4f6"></u-gap>
@@ -185,7 +185,7 @@
       </view>
     </view>
     <view class="survey-detail-item">
-      <view class="item-title">固定资产未入账总金额</view>
+      <view class="item-title">固定资产未入账总金额（万元）</view>
       <view class="item-body">
         <u-row>
         	<u-col span="6">
@@ -276,31 +276,41 @@
     <view class="survey-detail-item">
       <view class="item-title">已申报项目（包括荣誉资质）</view>
       <view class="item-body">
-        {{surveyDetail.declaredItems}}
+        <text>{{surveyDetail.declaredItems}}</text>
       </view>
     </view>
     <view class="survey-detail-item">
       <view class="item-title">研发计划或方向</view>
       <view class="item-body">
-        {{surveyDetail.researchPlan}}
+        <text>{{surveyDetail.researchPlan}}</text>
       </view>
     </view>
     <view class="survey-detail-item">
       <view class="item-title">行业水平</view>
       <view class="item-body">
-        {{surveyDetail.industryLevel}}
+        <text>{{surveyDetail.industryLevel}}</text>
       </view>
     </view>
     <view class="survey-detail-item">
       <view class="item-title">企业未来三年的发展战略规划</view>
       <view class="item-body">
-        {{surveyDetail.strategicPlanning}}
+        <text>{{surveyDetail.strategicPlanning}}</text>
       </view>
     </view>
     <view class="survey-detail-item">
       <view class="item-title">其他</view>
       <view class="item-body">
-        <!-- {{surveyDetail.strategicPlanning}} -->
+        <view class="imgs-wrap">
+          <u-image
+            width="200" 
+            class="img-item"
+            height="200" 
+            border-radius="10"
+            :src="item" 
+            v-for="(item, index) in fileList"
+          >
+          </u-image>
+        </view>
       </view>
     </view>
 	</view>
@@ -313,6 +323,7 @@ export default {
       currentYear: new Date().getFullYear(),
       id: 0,
       surveyDetail: null,
+      fileList: [],
       headStyle: {
         paddingLeft: '14px'
       }
@@ -335,6 +346,9 @@ export default {
           url: '/companys/' + this.id
         })
         this.surveyDetail = resData.data
+        if (this.surveyDetail.detail) {
+          this.fileList = this.surveyDetail.detail.split(',')
+        }
         uni.hideLoading()
       } catch(e) {
         uni.hideLoading()
@@ -391,6 +405,14 @@ export default {
         }
         .col-title {
           margin-bottom: 6px;
+        }
+      }
+      .imgs-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        .img-item {
+          margin-bottom: 10px;
         }
       }
     }

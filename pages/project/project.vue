@@ -9,10 +9,22 @@
           </view>
           <view class="listcard-content__des">
             <view class="listcard-content__des-label">
-              <view class="listcard-content__des-label-item">企业名称：{{item.companyName}}</view>
-              <view class="listcard-content__des-label-item">项目进度：{{item.projectSchedule || '-'}}</view>
-              <view class="listcard-content__des-label-item">实际到账金额：{{item.actualAmount}}</view>
-              <view class="listcard-content__des-label-item">具体补贴额度：{{item.subsidyAmount}}</view>
+              <view class="listcard-content__des-label-item">
+                <view class="label-item-label">企业名称：</view>
+                <text>{{item.companyName}}</text>
+              </view>
+              <view class="listcard-content__des-label-item">
+                <view class="label-item-label">实际到账金额：</view>
+                <text>{{item.actualAmount}}万元</text>
+              </view>
+              <view class="listcard-content__des-label-item">
+                <view class="label-item-label">具体补贴额度：</view>
+                <text>{{item.subsidyAmount}}万元</text>
+              </view>
+              <view class="listcard-content__des-label-item">
+                <view class="label-item-label">项目进度：</view>
+                <text>{{item.projectSchedule || '-'}}</text>
+              </view>
             </view>
           </view>
         </view>
@@ -132,6 +144,12 @@
   				.listcard-content__des-label-item {
   					color: $u-type-info;
             line-height: 1.6;
+            display: flex;
+            .label-item-label {
+              width: 90px;
+              text-align: right;
+              flex-shrink: 0;
+            }
   				}
   			}
   			.listcard-content__des-browse {

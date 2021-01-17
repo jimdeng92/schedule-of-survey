@@ -16,8 +16,8 @@
             成立时间：{{item.establishTime}}
           </view> -->
         </view>
-        <view class="listcard-image">
-          <image src="/static/logo.png" mode="aspectFill"></image>
+        <view class="listcard-image" v-if="item.detail">
+          <image :src="item.detail.split(',')[0]" mode="aspectFill"></image>
         </view>
       </view>
       <!-- 加载更多 -->

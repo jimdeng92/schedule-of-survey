@@ -1,6 +1,6 @@
 <template>
 	<view class="login-container">
-		<view class="login-title">调查表</view>
+		<view class="login-title">亚标</view>
 		<view class="login-form">
       <u-form :model="form" ref="uForm">
       		<u-form-item left-icon="account">
