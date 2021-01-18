@@ -51,9 +51,7 @@
 		},
     onReady() {
       this.getNoticeList()
-      if (uni.getStorageSync('token')) {
-        this.getProjectAmount()
-      }
+      this.getProjectAmount()
     },
     onShareAppMessage() {
       console.log('index--onShareAppMessage');
@@ -65,11 +63,24 @@
       },
       async getProjectAmount() {
         try {
-          const resData = await this.$request({
-            url: '/queryProjectSum',
-            method: 'GET'
+          uni.request({
+            url: 'https://test.zhengchi-cn.com/mgmt/v1/queryProjectSum',
+            method: 'GET',
+            header: {
+              token: uni.getStorageSync('token') || ''
+            },
+            success(res) {
+              // 仅请求成功处理，不成功不处理
+              if (res.data.code === 200) {
+                this.projectAmount = resData.data
+              }
+            }
           })
-          this.projectAmount = resData.data
+          // const resData = await this.$request({
+          //   url: '/queryProjectSum',
+          //   method: 'GET'
+          // })
+          // this.projectAmount = resData.data
         } catch(e) {
           
         }
