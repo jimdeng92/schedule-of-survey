@@ -4,25 +4,40 @@
 		<view class="survey-detail-item">
       <view class="item-title">注册地址</view>
       <view class="item-body">
-        {{surveyDetail.province + surveyDetail.city + surveyDetail.area + surveyDetail.address}}
+        <template v-if="surveyDetail.province || surveyDetail.address">
+          {{surveyDetail.province + surveyDetail.city + surveyDetail.area + surveyDetail.address}}
+        </template>
+        <template v-else>-</template>
+      </view>
+    </view>
+    <view class="survey-detail-item">
+      <view class="item-title">联系人</view>
+      <view class="item-body">
+        {{surveyDetail.contacts || '-'}}
+      </view>
+    </view>
+    <view class="survey-detail-item">
+      <view class="item-title">联系电话</view>
+      <view class="item-body">
+        {{surveyDetail.contactNumber || '-'}}
       </view>
     </view>
     <view class="survey-detail-item">
       <view class="item-title">所属行业</view>
       <view class="item-body">
-        {{surveyDetail.enterpriseNature}}
+        {{surveyDetail.enterpriseNature || '-'}}
       </view>
     </view>
     <view class="survey-detail-item">
       <view class="item-title">成立日期</view>
       <view class="item-body">
-        {{surveyDetail.establishTime}}
+        {{surveyDetail.establishTime || '-'}}
       </view>
     </view>
     <view class="survey-detail-item">
       <view class="item-title">企业简介（含主营范围）</view>
       <view class="item-body">
-        <text>{{surveyDetail.businessScope}}</text>
+        <text>{{surveyDetail.businessScope || '-'}}</text>
       </view>
     </view>
     <u-gap height="20" bg-color="#f3f4f6"></u-gap>
@@ -31,20 +46,20 @@
     <view class="survey-detail-item">
       <view class="item-title">形象建设、提升</view>
       <view class="item-body">
-        {{surveyDetail.building}}
+        {{surveyDetail.building || '-'}}
       </view>
     </view>
     <view class="survey-detail-item">
       <view class="item-title">政策性补贴</view>
       <view class="item-body">
-        {{surveyDetail.policySubsidies}}
+        {{surveyDetail.policySubsidies || '-'}}
       </view>
     </view>
     <u-gap height="20" bg-color="#f3f4f6"></u-gap>
     <view class="survey-detail-item">
       <view class="item-title">高新技术领域</view>
       <view class="item-body">
-        <text>{{surveyDetail.techField}}</text>
+        <text>{{surveyDetail.techField || '-'}}</text>
       </view>
     </view>
     <u-gap height="20" bg-color="#f3f4f6"></u-gap>
@@ -59,9 +74,9 @@
             <u-th>2019年</u-th>
           </u-tr>
           <u-tr>
-            <u-td>{{surveyDetail.revenueOne}}</u-td>
-            <u-td>{{surveyDetail.revenueTwo}}</u-td>
-            <u-td>{{surveyDetail.revenueThree}}</u-td>
+            <u-td>{{surveyDetail.revenueOne || '-'}}</u-td>
+            <u-td>{{surveyDetail.revenueTwo || '-'}}</u-td>
+            <u-td>{{surveyDetail.revenueThree || '-'}}</u-td>
           </u-tr>
         </u-table>
       </view>
@@ -76,9 +91,9 @@
             <u-th>2019年</u-th>
           </u-tr>
           <u-tr>
-            <u-td>{{surveyDetail.assetsOne}}</u-td>
-            <u-td>{{surveyDetail.assetsTwo}}</u-td>
-            <u-td>{{surveyDetail.assetsThree}}</u-td>
+            <u-td>{{surveyDetail.assetsOne || '-'}}</u-td>
+            <u-td>{{surveyDetail.assetsTwo || '-'}}</u-td>
+            <u-td>{{surveyDetail.assetsThree || '-'}}</u-td>
           </u-tr>
         </u-table>
       </view>
@@ -93,9 +108,9 @@
             <u-th>2019年</u-th>
           </u-tr>
           <u-tr>
-            <u-td>{{surveyDetail.researchFeeOne}}</u-td>
-            <u-td>{{surveyDetail.researchFeeTwo}}</u-td>
-            <u-td>{{surveyDetail.researchFeeThree}}</u-td>
+            <u-td>{{surveyDetail.researchFeeOne || '-'}}</u-td>
+            <u-td>{{surveyDetail.researchFeeTwo || '-'}}</u-td>
+            <u-td>{{surveyDetail.researchFeeThree || '-'}}</u-td>
           </u-tr>
         </u-table>
       </view>
@@ -110,9 +125,9 @@
             <u-th>{{currentYear - 2}}年</u-th>
           </u-tr>
           <u-tr>
-            <u-td>{{surveyDetail.taxOne}}</u-td>
-            <u-td>{{surveyDetail.taxTwo}}</u-td>
-            <u-td>{{surveyDetail.taxThree}}</u-td>
+            <u-td>{{surveyDetail.taxOne || '-'}}</u-td>
+            <u-td>{{surveyDetail.taxTwo || '-'}}</u-td>
+            <u-td>{{surveyDetail.taxThree || '-'}}</u-td>
           </u-tr>
         </u-table>
       </view>
@@ -121,7 +136,7 @@
     <view class="survey-detail-item">
       <view class="item-title">融资贷款（质押）</view>
       <view class="item-body">
-        {{surveyDetail.pledge}}万
+        {{surveyDetail.pledge || '-'}}
       </view>
     </view>
     <u-gap height="20" bg-color="#f3f4f6"></u-gap>
@@ -129,37 +144,39 @@
     <view class="survey-detail-item">
       <view class="item-title">硕士以上学历（人）</view>
       <view class="item-body">
-        {{surveyDetail.postgraduateCount}}
+        {{surveyDetail.postgraduateCount || '-'}}
       </view>
     </view>
     <view class="survey-detail-item">
       <view class="item-title">本科学历（人）</view>
       <view class="item-body">
-        {{surveyDetail.undergraduateCount}}
+        {{surveyDetail.undergraduateCount || '-'}}
       </view>
     </view>
     <view class="survey-detail-item">
       <view class="item-title">专科学历（人）</view>
       <view class="item-body">
-        {{surveyDetail.juniorCollegeCount}}
+        {{surveyDetail.juniorCollegeCount || '-'}}
       </view>
     </view>
     <view class="survey-detail-item">
       <view class="item-title">职称证书人数（人）</view>
       <view class="item-body">
-        {{surveyDetail.occupationCount}}
+        {{surveyDetail.occupationCount || '-'}}
       </view>
     </view>
     <view class="survey-detail-item">
       <view class="item-title">研发人员占所有在职人员比率</view>
       <view class="item-body">
-        {{surveyDetail.postgraduateRatio}}%
+        <template>
+          {{surveyDetail.postgraduateRatio ? `${surveyDetail.postgraduateRatio}%` : '-'}}
+        </template>
       </view>
     </view>
     <view class="survey-detail-item">
       <view class="item-title">总人数（人）</view>
       <view class="item-body">
-        {{surveyDetail.allCount}}
+        {{surveyDetail.allCount || '-'}}
       </view>
     </view>
 		<u-gap height="20" bg-color="#f3f4f6"></u-gap>
@@ -172,13 +189,13 @@
         	<u-col span="6">
         		<view class="item-body-col">
               <view class="col-title">基础建设投资（万元）</view>
-              <view>{{surveyDetail.infrastructureBaseInvestment}}</view>
+              <view>{{surveyDetail.infrastructureBaseInvestment || '-'}}</view>
             </view>
         	</u-col>
         	<u-col span="6">
         		<view class="item-body-col">
               <view class="col-title">设备投资（万元）</view>
-              <view>{{surveyDetail.equipmentInvestment}}</view>
+              <view>{{surveyDetail.equipmentInvestment || '-'}}</view>
             </view>
         	</u-col>
         </u-row>
@@ -191,43 +208,43 @@
         	<u-col span="6">
         		<view class="item-body-col">
               <view class="col-title">基建投资</view>
-              <view>{{surveyDetail.infrastructureInvestment}}</view>
+              <view>{{surveyDetail.infrastructureInvestment || '-'}}</view>
             </view>
         	</u-col>
         	<u-col span="6">
         		<view class="item-body-col">
               <view class="col-title">冷链投资</view>
-              <view>{{surveyDetail.coldChainInvestment}}</view>
+              <view>{{surveyDetail.coldChainInvestment || '-'}}</view>
             </view>
         	</u-col>
         	<u-col span="6">
         		<view class="item-body-col">
               <view class="col-title">物流投资</view>
-              <view>{{surveyDetail.logisticsInvestment}}</view>
+              <view>{{surveyDetail.logisticsInvestment || '-'}}</view>
             </view>
         	</u-col>
         	<u-col span="6">
         		<view class="item-body-col">
               <view class="col-title">农机投资</view>
-              <view>{{surveyDetail.machineryInvestment}}</view>
+              <view>{{surveyDetail.machineryInvestment || '-'}}</view>
             </view>
         	</u-col>
         	<u-col span="6">
         		<view class="item-body-col">
               <view class="col-title">农药化肥投资</view>
-              <view>{{surveyDetail.pesticidesInvestment}}</view>
+              <view>{{surveyDetail.pesticidesInvestment || '-'}}</view>
             </view>
         	</u-col>
         	<u-col span="6">
         		<view class="item-body-col">
               <view class="col-title">仓库投资</view>
-              <view>{{surveyDetail.warehouseInvestment}}</view>
+              <view>{{surveyDetail.warehouseInvestment || '-'}}</view>
             </view>
         	</u-col>
         	<u-col span="6">
         		<view class="item-body-col">
               <view class="col-title">大棚建设投资</view>
-              <view>{{surveyDetail.constructionInvestment}}</view>
+              <view>{{surveyDetail.constructionInvestment || '-'}}</view>
             </view>
         	</u-col>
         </u-row>
@@ -236,31 +253,31 @@
     <view class="survey-detail-item">
       <view class="item-title">种植/养殖规模（亩）</view>
       <view class="item-body">
-        {{surveyDetail.breedingScale}}
+        {{surveyDetail.breedingScale || '-'}}
       </view>
     </view>
     <view class="survey-detail-item">
       <view class="item-title">10万元以上设备原价总值（万元）</view>
       <view class="item-body">
-        {{surveyDetail.equipmentAmt}}
+        {{surveyDetail.equipmentAmt || '-'}}
       </view>
     </view>
     <view class="survey-detail-item">
       <view class="item-title">场地用房（平方米）</view>
       <view class="item-body">
-        {{surveyDetail.siteSpace}}
+        {{surveyDetail.siteSpace || '-'}}
       </view>
     </view>
     <view class="survey-detail-item">
       <view class="item-title">投资计划（1-3年内）-基础建设投资（万元）</view>
       <view class="item-body">
-        {{surveyDetail.infrastructurePlanInvestment}}
+        {{surveyDetail.infrastructurePlanInvestment || '-'}}
       </view>
     </view>
     <view class="survey-detail-item">
       <view class="item-title">投资计划（1-3年内）-设备投资（万元）</view>
       <view class="item-body">
-        {{surveyDetail.equipmentInvestment}}
+        {{surveyDetail.equipmentInvestment || '-'}}
       </view>
     </view>
     <u-gap height="20" bg-color="#f3f4f6"></u-gap>
@@ -269,38 +286,38 @@
     <view class="survey-detail-item">
       <view class="item-title">主要开票名称</view>
       <view class="item-body">
-        {{surveyDetail.billingName}}
+        {{surveyDetail.billingName || '-'}}
       </view>
     </view>
     <u-gap height="20" bg-color="#f3f4f6"></u-gap>
     <view class="survey-detail-item">
       <view class="item-title">已申报项目（包括荣誉资质）</view>
       <view class="item-body">
-        <text>{{surveyDetail.declaredItems}}</text>
+        <text>{{surveyDetail.declaredItems || '-'}}</text>
       </view>
     </view>
     <view class="survey-detail-item">
       <view class="item-title">研发计划或方向</view>
       <view class="item-body">
-        <text>{{surveyDetail.researchPlan}}</text>
+        <text>{{surveyDetail.researchPlan || '-'}}</text>
       </view>
     </view>
     <view class="survey-detail-item">
       <view class="item-title">行业水平</view>
       <view class="item-body">
-        <text>{{surveyDetail.industryLevel}}</text>
+        <text>{{surveyDetail.industryLevel || '-'}}</text>
       </view>
     </view>
     <view class="survey-detail-item">
       <view class="item-title">企业未来三年的发展战略规划</view>
       <view class="item-body">
-        <text>{{surveyDetail.strategicPlanning}}</text>
+        <text>{{surveyDetail.strategicPlanning || '-'}}</text>
       </view>
     </view>
     <view class="survey-detail-item">
       <view class="item-title">其他</view>
       <view class="item-body">
-        <view class="imgs-wrap">
+        <view class="imgs-wrap" v-if="fileList.length">
           <u-image
             width="200" 
             class="img-item"

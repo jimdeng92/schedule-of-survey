@@ -10,6 +10,8 @@ export default {
       visibleRegion: false,
       rules,
       form: {
+        contacts: '',
+        contactNumber: '',
         companyName: '',
         province: '',
         city: '',
@@ -115,15 +117,18 @@ export default {
             title: '请检查必填项',
             icon: 'none'
           })
+          uni.pageScrollTo({
+            scrollTop: 0
+          })
           return
         }
         // TODO 图片校验
-        if (this.$refs.uUpload.lists.length === 0) {
-          uni.showToast({
-            title: '请选择图片',
-            icon: 'none'
-          })
-        }
+        // if (this.$refs.uUpload.lists.length === 0) {
+        //   uni.showToast({
+        //     title: '请选择图片',
+        //     icon: 'none'
+        //   })
+        // }
         uni.showLoading()
         this.$refs.uUpload.upload();
       });

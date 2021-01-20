@@ -4,32 +4,38 @@
       <u-form-item label="企业名称" required prop="companyName">
         <u-input v-model="form.companyName" />
       </u-form-item>
-      <u-form-item label="注册地址（省市区）" required prop="region">
+      <u-form-item label="注册地址（省市区）" prop="region">
         <u-input v-model="form.region" @click="visibleRegion = true" type="select" :select-open="visibleRegion"/>
       </u-form-item>
-      <u-form-item label="注册详细地址(街道门牌号)" required prop="address">
+      <u-form-item label="注册详细地址(街道门牌号)" prop="address">
         <u-input v-model="form.address" />
       </u-form-item>
-      <u-form-item label="所属行业" required prop="enterpriseNature">
+      <u-form-item label="联系人" required prop="contacts">
+        <u-input v-model="form.contacts" />
+      </u-form-item>
+      <u-form-item label="联系电话" required prop="contactNumber">
+        <u-input v-model="form.contactNumber" />
+      </u-form-item>
+      <u-form-item label="所属行业" prop="enterpriseNature">
         <u-input v-model="form.enterpriseNature" />
       </u-form-item>
-      <u-form-item label="成立日期" required prop="establishTime">
+      <u-form-item label="成立日期" prop="establishTime">
         <u-input v-model="form.establishTime" @click="visibleDate = true" type="select" :select-open="visibleDate"/>
       </u-form-item>
-      <u-form-item label="企业简介（含主营范围）" required prop="businessScope">
+      <u-form-item label="企业简介（含主营范围）" prop="businessScope">
         <u-input v-model="form.businessScope" type="textarea" maxlength="300"/>
        </u-form-item>
       <u-card title="诉求方向" :full="true" :border-radius="0">
         <view slot="body">
-          <u-form-item label="形象建设、提升" required prop="building">
+          <u-form-item label="形象建设、提升" prop="building">
             <u-input v-model="form.building" />
           </u-form-item>
-          <u-form-item label="政策性补贴" required prop="policySubsidies">
+          <u-form-item label="政策性补贴" prop="policySubsidies">
             <u-input v-model="form.policySubsidies" />
           </u-form-item>
         </view>
       </u-card>
-      <u-form-item label="高新技术领域" required prop="techField">
+      <u-form-item label="高新技术领域" prop="techField">
         <u-input v-model="form.techField" type="textarea" maxlength="300"/>
       </u-form-item>
       <u-card title="财务状况" :full="true" :border-radius="0">
@@ -114,30 +120,30 @@
               </u-td>
             </u-tr>
           </u-table>
-          <u-form-item label="融资贷款（质押）" required prop="pledge">
+          <u-form-item label="融资贷款（质押）" prop="pledge">
             <u-input v-model="form.pledge" type="number"/>
           </u-form-item>
         </view>
       </u-card>
       <u-card title="人力资源结构（以申报个税/社保人数为准）" :full="true" :border-radius="0">
         <view slot="body">
-          <u-form-item label="硕士以上人数（人）" required prop="postgraduateCount">
+          <u-form-item label="硕士以上人数（人）" prop="postgraduateCount">
             <u-input v-model="form.postgraduateCount" type="number"/>
           </u-form-item>
-          <u-form-item label="本科学历（人）" required prop="undergraduateCount">
+          <u-form-item label="本科学历（人）" prop="undergraduateCount">
             <u-input v-model="form.undergraduateCount" type="number" />
           </u-form-item>
-          <u-form-item label="专科学历（人）" required prop="juniorCollegeCount">
+          <u-form-item label="专科学历（人）" prop="juniorCollegeCount">
             <u-input v-model="form.juniorCollegeCount" type="number" />
           </u-form-item>
-          <u-form-item label="职称证书人数（人）" required prop="occupationCount">
+          <u-form-item label="职称证书人数（人）" prop="occupationCount">
             <u-input v-model="form.occupationCount" type="number" />
           </u-form-item>
-          <u-form-item label="研发人员占所有在职人员比率" required prop="postgraduateRatio">
+          <u-form-item label="研发人员占所有在职人员比率" prop="postgraduateRatio">
             <view slot="right">%</view>
             <u-input v-model="form.postgraduateRatio" type="number" />
           </u-form-item>
-          <u-form-item label="总人数（人）" required prop="allCount">
+          <u-form-item label="总人数（人）" prop="allCount">
             <u-input v-model="form.allCount" type="number" />
           </u-form-item>
         </view>
@@ -193,7 +199,7 @@
       </u-card>
       <u-card title="产品名称" :full="true" :border-radius="0">
         <view slot="body">
-          <u-form-item label="主要开票名称" required prop="billingName">
+          <u-form-item label="主要开票名称" prop="billingName">
             <u-input v-model="form.billingName" />
           </u-form-item>
         </view>
@@ -201,16 +207,16 @@
       <u-form-item label="已申报项目（包括荣誉资质）">
         <u-input v-model="form.declaredItems" type="textarea" maxlength="300"/>
       </u-form-item>
-      <u-form-item label="研发计划或方向" required prop="researchPlan">
+      <u-form-item label="研发计划或方向" prop="researchPlan">
         <u-input v-model="form.researchPlan " type="textarea" maxlength="300"/>
       </u-form-item>
       <u-form-item label="行业水平">
         <u-input v-model="form.industryLevel" type="textarea" maxlength="300"/>
       </u-form-item>
-      <u-form-item label="企业未来三年的发展战略规划" required prop="strategicPlanning">
+      <u-form-item label="企业未来三年的发展战略规划" prop="strategicPlanning">
         <u-input v-model="form.strategicPlanning" type="textarea" placeholder="1.是否有投新厂或迁厂规划、2.是否有购买或更新设备规划、3.是否有建设冷链规划（冷库、冷藏车）、4.以及其他方面投资规划" maxlength="300"/>
       </u-form-item>
-      <u-form-item label="其他（附产品、厂房、研发场地、研发设备、销售发票等照片）" required>
+      <u-form-item label="其他（附产品、厂房、研发场地、研发设备、销售发票等照片）">
         <u-upload 
           ref="uUpload" 
           :action="actionUrl" 

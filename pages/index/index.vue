@@ -69,10 +69,10 @@
             header: {
               token: uni.getStorageSync('token') || ''
             },
-            success(res) {
+            success:(res) => {
               // 仅请求成功处理，不成功不处理
               if (res.data.code === 200) {
-                this.projectAmount = resData.data
+                this.projectAmount = res.data.data
               }
             }
           })
