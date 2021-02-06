@@ -8,7 +8,7 @@
           <view class="grid-item" @click="handleSkip(item.id)">
             <u-icon :name="item.iconName" color="#fff" :size="item.iconSize"></u-icon>
             <view class="grid-item-text">{{item.gridText}}</view>
-            <view class="grid-item-data" v-if="item.id === 1 && projectAmount">补贴总金额：{{projectAmount}}万</view>
+            <view class="grid-item-data" v-if="item.id === 1 && isLogin">补贴总金额：{{projectAmount || 0}}万</view>
           </view>
         </u-col>
       </u-row>
@@ -21,6 +21,10 @@
         <view class="popup-context">{{popupContent.context}}</view>
       </view>
     </u-popup>
+    <!-- 退出登录 -->
+    <view class="login-out" @click="handleLoginOut" v-if="isLogin">
+      <text class="login-out-text">退出登录</text>
+    </view>
 	</view>
 </template>
 
@@ -28,6 +32,7 @@
 	export default {
 		data() {
 			return {
+        isLogin: false,
         visiblePopup: false,
         noticeList: [],
         projectAmount: '',
@@ -61,6 +66,16 @@
         this.visiblePopup = true
         this.popupContent = this.nativeList[index]
       },
+      handleLoginOut() {
+        uni.removeStorage({
+          key: 'token'
+        })
+        uni.showToast({
+          title: '退出登录成功',
+          icon: 'none'
+        });
+        this.isLogin = false
+      },
       async getProjectAmount() {
         try {
           uni.request({
@@ -73,6 +88,7 @@
               // 仅请求成功处理，不成功不处理
               if (res.data.code === 200) {
                 this.projectAmount = res.data.data
+                this.isLogin = true
               }
             }
           })
@@ -188,6 +204,23 @@
       font-size: 12px;
       color: $u-type-info-disabled;
       line-height: 2;
+    }
+  }
+  .login-out {
+    color: $u-type-error;
+    border-radius: 22px;
+    background-color: #fff;
+    height: 44px;
+    padding: 0 28px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 5px $u-type-info;
+    .login-out-text {
+      font-size: 14px;
     }
   }
 }
