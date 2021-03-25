@@ -3,7 +3,7 @@ import rules from '@/utils/rules.js'
 export default {
   data() {
     return {
-      actionUrl: "https://test.zhengchi-cn.com/mgmt/v1/uploadAppPic",
+      actionUrl: "https://admin.zhengchi-cn.com/mgmt/v1/uploadAppPic",
       token: uni.getStorageSync('token') || '',
       currentYear: new Date().getFullYear(),
       visibleDate: false,

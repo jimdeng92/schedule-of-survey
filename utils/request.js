@@ -1,5 +1,5 @@
 
-const baseURI = 'https://test.zhengchi-cn.com/mgmt/v1'
+const baseURI = 'https://admin.zhengchi-cn.com/mgmt/v1'
 
 export default (params) => {
   return new Promise((resolve, reject) => {

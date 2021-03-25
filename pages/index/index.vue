@@ -79,7 +79,7 @@
       async getProjectAmount() {
         try {
           uni.request({
-            url: 'https://test.zhengchi-cn.com/mgmt/v1/queryProjectSum',
+            url: 'https://admin.zhengchi-cn.com/mgmt/v1/queryProjectSum',
             method: 'GET',
             header: {
               token: uni.getStorageSync('token') || ''

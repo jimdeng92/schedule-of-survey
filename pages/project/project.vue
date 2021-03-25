@@ -145,6 +145,7 @@
   					color: $u-type-info;
             line-height: 1.6;
             display: flex;
+            word-break: break-all;
             .label-item-label {
               width: 90px;
               text-align: right;
